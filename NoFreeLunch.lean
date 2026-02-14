@@ -1,25 +1,15 @@
 /-
 # No Free Lunch Theorem - Minimal Self-Contained Version
-# 
-# This file requires ONLY Lean 4 with no external dependencies.
-# It demonstrates the core NFL insight for binary classification.
-#
-# To run: 
-#   1. Install Lean 4 (https://leanprover.github.io/lean4/doc/setup.html)
-#   2. Run: lean NoFreeLunchMinimal.lean
-#
-# Connection to Duede's "Instruments, Agents, and Artificial Intelligence":
-# NFL formalizes why "brute induction" fails to justify DL reliability.
+# No Free Lunch (NFL) formalizes why "brute induction" 
+fails to justify Deep Learning (DL) reliability.
 -/
 
 -- ============================================================================
--- SECTION 1: BASIC DEFINITIONS (No imports needed)
+-- SECTION 1: BASIC DEFINITIONS
 -- ============================================================================
 
 -- We work with Bool as our output space (binary classification)
--- This keeps everything simple and avoids needing Mathlib
 
--- A prediction is just a Bool
 -- A "problem" is the true label (also a Bool in this minimal case)
 
 -- Zero-one loss: 0 if correct, 1 if wrong
@@ -123,8 +113,8 @@ For binary classification with no prior knowledge:
 2. No algorithm beats random guessing
 3. Past performance tells us nothing about future performance
 
-This is exactly Duede's point: without assumptions about problem structure,
-brute induction (past success) cannot justify belief in reliability.
+Without assumptions about problem structure, brute induction (past success) 
+cannot justify belief in reliability.
 -/
 
 -- Average loss (scaled by 2 to avoid rationals) is always 1
@@ -147,8 +137,6 @@ Example: If we know the true label is always `true`, then:
 - alwaysTrue has loss 0
 - alwaysFalse has loss 1
 
-This formalizes Duede's point: to justify DL reliability, we need
-assumptions about problem structure. But DL's assumptions are opaque.
 -/
 
 -- With a known prior (true label is always `true`), algorithms differ
@@ -164,7 +152,6 @@ theorem with_assumption_alwaysTrue_wins :
 -- ============================================================================
 
 /-
-## Connection to Duede's Argument
 
 ### What We Proved
 1. `nfl_bool`: For any two predictions, total loss over all possible true values is equal
